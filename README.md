@@ -1,18 +1,39 @@
-# [Registry monitoring and protection](https://www.easefilter.com/Forums_Files/RegMon.htm)
+# [Registry Monitor & Protection SDK](https://www.easefilter.com/Forums_Files/RegMon.htm)
 
-The Registry Filter Driver is a kernel-mode driver that filters registry calls, it provides you an easy way to develop Windows application for registry monitoring and protection, track the registry change and prevent the registry from being changed by unauthorized processes or users. 
+A powerful, kernel-level Windows Registry monitoring, tracking, and access control framework built on top of the Windows Registry Filter Driver architecture. **EaseFilter RegMon** allows developers to intercept, audit, modify, and block registry operations in real time, delivering robust defense against unauthorized modifications, "fileless" malware, and tampering with critical system configurations.
+![Registry SDK Architecture](https://www.easefilter.com/Images/registry-filter-driver-architecture.jpg)
+---
 
-With the Registry Filter Driver, it allows your application to protect Windows core registry keys and values and to prevent potentially damaging system configuration changes, besides operating system files. 
+## 🚀 Key Features
 
-By registering a RegistryCallback routine in the registry filter driver, it can receive notifications of each registry operation before the configuration manager processes the operation. A set of REG_XXX_KEY_INFORMATION data structures which contain information about each registry operation will return to your user mode application, your application can allow the registry access or change to authorized processes or users, and deny the registry access to unauthorized processes or users.
+* **Real-Time Registry Monitoring:** Track create, delete, read, write, rename, and query operations across Windows registry keys and values instantly.
+* **Granular Access Control:** Define strict inclusion/exclusion rules to allow or deny registry operations based on process name, user context, or key paths.
+* **"Fileless" Malware Protection:** Safeguard critical registry hives (such as `Run`, `RunOnce`, and system startup persistence mechanisms) from unauthorized persistence injections.
+* **Pre- and Post-Operation Callbacks:** Inspect input/output buffers and decide whether to permit, deny (`STATUS_ACCESS_DENIED`), or redirect operations before the Configuration Manager processes them.
+* **Registry Key Virtualization:** Dynamically redirect or return custom virtualized registry data for tailored application behavior and sandboxing.
+* **Developer-Friendly API:** Simple, robust C# and C++ APIs with complete sample projects for rapid prototyping and enterprise integration.
 
-## A C# registry monitoring and protection example
+---
 
-With the EaseFilter Registry example, it enables your application to protect Windows core registry keys and values and to prevent potentially damaging system configuration changes, besides operating system files. By registering a RegistryCallback routine in the registry filter driver, it can receive notifications of each registry operation before the configuration manager processes the operation. A set of REG_XXX_KEY_INFORMATION data structures which contain information about each registry operation will return to your user mode application, your application can allow the registry access or change to authorized processes or users, and deny the registry access to unauthorized processes or users.
+## 🛠️ Architecture & How It Works
 
-![Registry monitoring and protection](https://www.easefilter.com/images/registryScreenshot.png)
- 
-[Read more about registry filter example](https://www.easefilter.com/Forums_Files/RegMon.htm)
+EaseFilter RegMon operates at the kernel level by registering a `RegistryCallback` routine with the Windows kernel filter architecture. 
+
+1. **Interception:** Captures registry transaction requests (`REG_NOTIFY_CLASS` operations) before they hit storage or the system configuration manager.
+2. **Context Evaluation:** Passes a `REG_XXX_KEY_INFORMATION` data structure containing process ID, user identity, key path, and value details to the user-mode service or callback handler.
+3. **Policy Enforcement:** Evaluates incoming actions against custom filter masks and rules to allow execution, log audit trails, or block unauthorized alterations instantly.
+
+---
+
+## 📋 Configuration & Quick Setup
+
+To monitor or control Windows registry activities using the EaseFilter SDK:
+
+1. **Define Filter Rules:** Establish process filter masks (e.g., matching specific executables or PIDs) combined with target registry key paths.
+2. **Set Access Control Flags:** Configure rule actions to audit or block unauthorized write/delete attempts on sensitive hives.
+3. **Register Callbacks:** Implement pre-notification routines to inspect and dynamically filter registry changes.
+
+---
 
 
 ## EaseFilter File System Filter Driver SDK Reference
@@ -54,6 +75,18 @@ With the EaseFilter Registry example, it enables your application to protect Win
 * [Filter Driver Developer Guide](https://www.easefilter.com/kb/DeveloperGuide.htm)
 * [MiniFilter Filter Driver Framework](https://www.easefilter.com/kb/minifilter-framework.htm)
 * [Isolation Filter Driver](https://www.easefilter.com/kb/Isolation_Filter_Driver.htm)
+
+## License
+
+This repository contains two distinct licensing categories:
+
+1. **Wrapper/Implementation Code (MIT License):** 
+   The source code, scripts, and configuration files provided directly in this repository are licensed under the [MIT License](LICENSE). You are free to modify, distribute, and use this specific integration code.
+
+2. **EaseFilter SDK (Commercial License):**
+   This project requires the EaseFilter SDK (including its binaries, filter drivers, and core libraries) to function. The EaseFilter SDK is **proprietary commercial software** and is strictly excluded from the MIT License.   
+   To use the EaseFilter SDK for commercial purposes or in a production environment, you must obtain a valid commercial license directly from [EaseFilter](https://www.easefilter.com/license.pdf).
+
 
 ## Support
 If you have questions or need help, please contact support@easefilter.com 
