@@ -1,8 +1,13 @@
-# [Registry Monitor & Protection SDK](https://www.easefilter.com/Forums_Files/RegMon.htm)
+# EaseFilter RegMon (Registry Monitor & Protection SDK)
+
+![Windows](https://img.shields.io/badge/Platform-Windows-blue)
+![Architecture](https://img.shields.io/badge/Architecture-Kernel--Mode%20Registry%20Minifilter-orange)
+![License](https://img.shields.io/badge/License-Commercial%20SDK-green)
+
+A powerful, kernel-level Windows Registry monitoring, tracking, and access control framework built on top of the Windows Registry Filter Driver architecture. **EaseFilter RegMon** allows developers to intercept, audit, modify, and block registry operations in real time, delivering robust defense against unauthorized modifications, "fileless" malware, and tampering with critical system configurations.
 
 ---
-A powerful, kernel-level Windows Registry monitoring, tracking, and access control framework built on top of the Windows Registry Filter Driver architecture. **EaseFilter RegMon** allows developers to intercept, audit, modify, and block registry operations in real time, delivering robust defense against unauthorized modifications, "fileless" malware, and tampering with critical system configurations.
----
+
 
 ## 🚀 Key Features
 
