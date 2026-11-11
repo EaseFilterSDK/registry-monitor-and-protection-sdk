@@ -1,7 +1,7 @@
 # [Registry Monitor & Protection SDK](https://www.easefilter.com/Forums_Files/RegMon.htm)
 
+---
 A powerful, kernel-level Windows Registry monitoring, tracking, and access control framework built on top of the Windows Registry Filter Driver architecture. **EaseFilter RegMon** allows developers to intercept, audit, modify, and block registry operations in real time, delivering robust defense against unauthorized modifications, "fileless" malware, and tampering with critical system configurations.
-![Registry SDK Architecture](https://www.easefilter.com/Images/registry-filter-driver-architecture.jpg)
 ---
 
 ## 🚀 Key Features
@@ -18,6 +18,7 @@ A powerful, kernel-level Windows Registry monitoring, tracking, and access contr
 ## 🛠️ Architecture & How It Works
 
 EaseFilter RegMon operates at the kernel level by registering a `RegistryCallback` routine with the Windows kernel filter architecture. 
+![Registry SDK Architecture](https://www.easefilter.com/Images/registry-filter-driver-architecture.jpg)
 
 1. **Interception:** Captures registry transaction requests (`REG_NOTIFY_CLASS` operations) before they hit storage or the system configuration manager.
 2. **Context Evaluation:** Passes a `REG_XXX_KEY_INFORMATION` data structure containing process ID, user identity, key path, and value details to the user-mode service or callback handler.
